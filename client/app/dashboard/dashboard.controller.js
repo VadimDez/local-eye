@@ -65,7 +65,7 @@
     // }
 
       init() {
-          this.myChartObject.type = "LineChart";
+          this.myChartObject.type = "AreaChart";
           this.myChartObject.displayed = false;
           this.myChartObject.data = {
               "cols": [{
@@ -74,73 +74,98 @@
                   type: "string"
               }, {
                   id: "laptop-id",
-                  label: "Laptop",
-                  type: "number"
-              }, {
-                  id: "desktop-id",
-                  label: "Desktop",
-                  type: "number"
-              }, {
-                  id: "server-id",
-                  label: "Server",
-                  type: "number"
-              }, {
-                  id: "cost-id",
-                  label: "Shipping",
+                  label: "Hours",
                   type: "number"
               }],
               "rows": [{
                   c: [{
-                      v: "January"
+                      v: "01/09/2016"
                   }, {
-                      v: 19,
-                      f: "42 items"
+                      v: 150,
+                      f: "150 hours"
+                  }]
+              },{
+                  c: [{
+                      v: "02/09/2016"
                   }, {
-                      v: 12,
-                      f: "Ony 12 items"
+                      v: 155,
+                      f: "155 hours"
+                  }]
+              },{
+                  c: [{
+                      v: "03/09/2016"
                   }, {
-                      v: 7,
-                      f: "7 servers"
+                      v: 170,
+                      f: "170 hours"
+                  }]
+              },{
+                  c: [{
+                      v: "04/09/2016"
                   }, {
-                      v: 4
+                      v: 195,
+                      f: "195 hours"
+                  }]
+              },{
+                  c: [{
+                      v: "05/09/2016"
+                  }, {
+                      v: 233,
+                      f: "233 hours"
+                  }]
+              },{
+                  c: [{
+                      v: "06/09/2016"
+                  }, {
+                      v: 234,
+                      f: "234 hours"
+                  }]
+              },{
+                  c: [{
+                      v: "07/09/2016"
+                  }, {
+                      v: 250,
+                      f: "250 hours"
+                  }]
+              },{
+                  c: [{
+                      v: "08/09/2016"
+                  }, {
+                      v: 266,
+                      f: "266 hours"
+                  }]
+              },{
+                  c: [{
+                      v: "09/09/2016"
+                  }, {
+                      v: 258,
+                      f: "258 hours"
                   }]
               }, {
                   c: [{
-                      v: "February"
+                      v: "10/09/2016"
                   }, {
-                      v: 13
-                  }, {
-                      v: 1,
-                      f: "1 unit (Out of stock this month)"
-                  }, {
-                      v: 12
-                  }, {
-                      v: 2
+                      v: 263,
+                      f: "263 hours"
                   }]
 
               }, {
                   c: [{
-                      v: "March"
+                      v: "11/09/2016"
                   }, {
-                      v: 24
-                  }, {
-                      v: 5
-                  }, {
-                      v: 11
-                  }, {
-                      v: 6
+                      v: 154,
+                      f: "154 hours"
                   }]
               }]
           };
           this.myChartObject.options = {
-              "title": "Sales per month",
-              "colors": ['#0000FF', '#009900', '#CC0000', '#DD9900'],
-              "defaultColors": ['#0000FF', '#009900', '#CC0000', '#DD9900'],
+              "title": "Current month",
+              "colors": ['#73D700'],
+              "defaultColors": ['#0000FF'],
               "isStacked": "true",
               "fill": 20,
               "displayExactValues": true,
               "vAxis": {
-                  "title": "Sales unit",
+                  "title": "Sales unit (hours)",
                   "gridlines": {
                       "count": 10
                   }
@@ -151,7 +176,7 @@
           };
 
           this.myChartObject.view = {
-              columns: [0, 1, 2, 3, 4]
+              columns: [0, 1]
           };
       }
   }
