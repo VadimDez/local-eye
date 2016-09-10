@@ -1,6 +1,11 @@
 <button ng-click="vm.getDirections()">Direction</button>
 <div class="flex-container">
     <div>
+        <div>
+            <input ng-model="vm.departure" type="text" placeholder="Departure">
+            <input ng-model="vm.destination" type="text" placeholder="Destination">
+            <button ng-click="vm.setupRoute()" type="button">Go</button>
+        </div>
         <ui-gmap-google-map center="vm.map.center" zoom="vm.map.zoom" events="vm.map.events">
             <ui-gmap-marker idKey="'center_marker'" coords="vm.centerMarker" ng-cloak>
               <ui-gmap-polyline ng-repeat="p in vm.polylines" path="p.path" stroke="p.stroke" visible='p.visible'
