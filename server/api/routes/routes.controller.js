@@ -24,11 +24,7 @@ function handleError(res, statusCode) {
  * restriction: 'admin'
  */
 export function index(req, res) {
-  return User.find({}, '-salt -password').exec()
-    .then(users => {
-      res.status(200).json(users);
-    })
-    .catch(handleError(res));
+  return res.status(200).json({points: []}).end();
 }
 
 /**
