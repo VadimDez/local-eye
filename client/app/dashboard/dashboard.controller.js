@@ -10,8 +10,8 @@
       this.awesomeThings = [];
       this.map = { center: { latitude: 47.6024589, longitude: 19.6490477 }, zoom: 5 };
 
-      // sw => (f.b, b.b)
-      // ne => (f.f, b.f)
+      // sw => (f.b, b.b) -> Lat/Lng
+      // ne => (f.f, b.f) -> Lat/Lng
 
       let bounds = new google.maps.LatLngBounds(
         new google.maps.LatLng(48.69096039092549, -118.4765625),
