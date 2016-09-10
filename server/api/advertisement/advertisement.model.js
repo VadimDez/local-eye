@@ -7,10 +7,10 @@ var AdvertisementSchema = new mongoose.Schema({
   description: String,
   type: String, // IMAGE ||
   url: String,
-  southeast_latitude: Number,
-  southeast_longitude: Number,
-  northwest_latitude: Number,
-  northwest_longitude: Number
+  southwest_latitude: Number,
+  southwest_longitude: Number,
+  northeast_latitude: Number,
+  northeast_longitude: Number
 });
 
 export default mongoose.model('Advertisement', AdvertisementSchema);

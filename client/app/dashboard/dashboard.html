@@ -34,6 +34,10 @@
                             <ui-gmap-marker idKey="'center_marker'" coords="vm.centerMarker" ng-cloak>
                                 <ui-gmap-polyline ng-repeat="p in vm.polylines" path="p.path" stroke="p.stroke" visible='p.visible'
                                                   geodesic='p.geodesic' fit="false" editable="p.editable" draggable="p.draggable"></ui-gmap-polyline>
+
+                                <ui-gmap-rectangle bounds="vm.rectangle.bounds"
+                                                   fill="vm.rectangle.fill"
+                                ></ui-gmap-rectangle>
                             </ui-gmap-marker>
                         </ui-gmap-google-map>
                     </span>
