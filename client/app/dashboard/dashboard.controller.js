@@ -5,6 +5,7 @@
   class DashboardController {
 
     constructor($http, $scope, socket) {
+        this.adv = [];
       this.$http = $http;
       this.socket = socket;
       this.awesomeThings = [];
@@ -60,6 +61,8 @@
           .then((res) => {
               console.log(res);
               this.adv = res.data;
+
+              this.setArea();
           });
     }
 
@@ -74,8 +77,8 @@
 
         this.adv.forEach(item=>{
             let bounds = new google.maps.LatLngBounds(
-                new google.maps.LatLng(item.northwest_latitude, item.northwest_longitude),
-                new google.maps.LatLng(item.southeast_latitude, item.southeast_longitude));
+                new google.maps.LatLng(item.southwest_latitude, item.southwest_longitude),
+                new google.maps.LatLng(item.northeast_latitude, item.northeast_longitude));
             arr.push({
                 bounds: bounds,
                 fill: { color: '#85C1E9', opacity: 0.5}

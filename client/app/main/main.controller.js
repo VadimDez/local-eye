@@ -166,7 +166,7 @@
               // ad found!
             this.advertisement = res.data[0];
           } else {
-            this.advertisement = null
+            this.advertisement = null;
               // render default advertising
               // if needed
           }
