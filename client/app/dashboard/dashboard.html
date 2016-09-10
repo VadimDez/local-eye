@@ -1,5 +1,4 @@
-{{myChartObject}}
-<div google-chart chart="myChartObject" agc-on-select="hideSeries(selectedItem)" style="height:450px; width:100%;"></div>
+<div google-chart chart="vm.myChartObject" agc-on-select="vm.hideSeries(selectedItem)" style="height:450px; width:100%;"></div>
 <md-content class="md-padding" layout-xs="column" layout="row">
     <div flex-xs flex-gt-xs="50" layout="column">
         <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>

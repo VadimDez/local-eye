@@ -159,6 +159,7 @@
   angular.module('localEyeApp')
     .component('dashboard', {
       templateUrl: 'app/dashboard/dashboard.html',
-      controller: DashboardController
+      controller: DashboardController,
+      controllerAs: 'vm'
     });
 })();
