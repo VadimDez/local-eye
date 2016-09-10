@@ -20,6 +20,9 @@
         //Methods
         this.hideSeries = hideSeries;
 
+        console.log('ok');
+        this.getAdvertisement();
+
         this.init();
 
         function hideSeries(selectedItem) {
@@ -41,6 +44,14 @@
                 }
             }
         }
+    }
+
+    getAdvertisement() {
+        this.$http.get('/api/advertisements')
+          .then((res) => {
+              console.log(res);
+              this.adv = res.data;
+          });
     }
 
     $onInit() {
@@ -65,6 +76,7 @@
     // }
 
       init() {
+
           this.myChartObject.type = "AreaChart";
           this.myChartObject.displayed = false;
           this.myChartObject.data = {

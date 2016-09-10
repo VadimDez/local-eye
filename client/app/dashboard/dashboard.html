@@ -3,17 +3,27 @@
 
 
 
-
 <md-content class="md-padding" layout-xs="column" layout="row">
     <div flex-xs flex-gt-xs="50" layout="column">
         <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
             <md-card-title>
                 <md-card-title-text>
                     <span class="md-headline">List of advertising</span>
+
+                <span class="md-subhead">
+                     <md-list flex>
+                        <md-list-item class="md-3-line" ng-repeat="(key, value) in vm.adv" ng-click="null">
+                          <div class="md-list-item-text" layout="column">
+                            <p>{{value.name}}</p>
+                          </div>
+                        </md-list-item>
+                     </md-list>
+
+                    <!--<ul>
+                        <li ng-repeat="(key, value) in vm.adv" >{{value.name}}</li>
+                    </ul>-->
+                </span>
                 </md-card-title-text>
-                <md-card-title-media>
-                    <div class="md-media-lg card-media"></div>
-                </md-card-title-media>
             </md-card-title>
         </md-card>
     </div>
