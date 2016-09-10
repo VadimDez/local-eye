@@ -30,7 +30,6 @@
         //Methods
         this.hideSeries = hideSeries;
 
-        console.log('ok');
         this.getAdvertisement();
 
         this.init();
@@ -75,17 +74,17 @@
 
         this.adv.forEach(item=>{
             let bounds = new google.maps.LatLngBounds(
-                new google.maps.LatLng(item.southeast_latitude, item.southeast_longitude),
-                new google.maps.LatLng(item.northwest_latitude, item.northwest_longitude));
+                new google.maps.LatLng(item.northwest_latitude, item.northwest_longitude),
+                new google.maps.LatLng(item.southeast_latitude, item.southeast_longitude));
             arr.push({
                 bounds: bounds,
                 fill: { color: '#85C1E9', opacity: 0.5}
             });
         });
 
-        this.rectangles
+        this.rectangles = arr;
 
-
+        console.log(this.rectangles);
         /*let bounds = new google.maps.LatLngBounds(
             new google.maps.LatLng(48.8068631, 10.2282714),
             new google.maps.LatLng(47.185979, 16.243286));
