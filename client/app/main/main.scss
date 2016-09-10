@@ -27,3 +27,12 @@
 }
 
 .angular-google-map-container { height: 400px; }
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+
+  > div {
+    flex: 1;
+  }
+}

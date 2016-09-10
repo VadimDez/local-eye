@@ -1,2 +1,11 @@
-{{ vm.map }}
-<ui-gmap-google-map center='vm.map.center' zoom='vm.map.zoom'></ui-gmap-google-map>
+<button ng-click="vm.getDirections()">Direction</button>
+<div class="flex-container">
+    <div>
+        <ui-gmap-google-map center="vm.map.center" zoom="vm.map.zoom">
+            <ui-gmap-marker idKey="'center_marker'" coords="vm.map.center" ng-cloak></ui-gmap-marker>
+        </ui-gmap-google-map>
+    </div>
+    <div>
+    </div>
+</div>
+
