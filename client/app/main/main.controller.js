@@ -19,6 +19,7 @@
         }
       };
 
+
       this.directionsDisplay = new google.maps.DirectionsRenderer();
       this.directionsService = new google.maps.DirectionsService();
       this.geocoder = new google.maps.Geocoder();
@@ -30,6 +31,7 @@
       };
 
       this.centerMarker = this.map.center;
+      this.locationBasedAdvertisement(this.centerMarker.latitude, this.centerMarker.longitude);
 
       // $scope.$on('$destroy', function() {
       //   socket.unsyncUpdates('thing');
@@ -92,8 +94,6 @@
     }
 
     locationBasedAdvertisement(lat, lng) {
-      console.log(lat, lng);
-
       if (lat < 48.20842133818611 && lat > 47.98462736343803 && lng > 11.405899047851582 && lng < 11.740982055664082) {
         this.advertisement = 'BMW';
       } else {
