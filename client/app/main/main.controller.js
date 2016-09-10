@@ -12,7 +12,7 @@
 
       this.map = {
         control: {},
-        center: { latitude: 45, longitude: -73 },
+        center: { latitude: 48.14248507796358, longitude: 11.581680297851582 },
         zoom: 8,
         events: {
           center_changed: this.bounds_changed.bind(this)
@@ -79,11 +79,26 @@
 
     bounds_changed(e) {
       this.$timeout(() => {
+        const lat = e.center.lat();
+        const lng = e.center.lng();
+
         this.centerMarker = {
-          latitude: e.center.lat(),
-          longitude: e.center.lng()
+          latitude: lat,
+          longitude: lng
         };
+
+        this.locationBasedAdvertisement(lat, lng);
       }, 300);
+    }
+
+    locationBasedAdvertisement(lat, lng) {
+      console.log(lat, lng);
+
+      if (lat < 48.20842133818611 && lat > 47.98462736343803 && lng > 11.405899047851582 && lng < 11.740982055664082) {
+        this.advertisement = 'BMW';
+      } else {
+        this.advertisement = 'AUDI';
+      }
     }
   }
 
