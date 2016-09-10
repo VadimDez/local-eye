@@ -65,7 +65,7 @@
     }
 
     setArea(){
-        console.log('I"m here');
+
     }
 
     $onInit() {

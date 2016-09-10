@@ -62,11 +62,40 @@ function handleError(res, statusCode) {
 // Gets a list of Advertisements
 export function index(req, res) {
   if (req.query.hasOwnProperty('latitude')) {
-    return Advertisement.find()
-        .where('southeast_latitude').lt(req.query.latitude)
-        .where('southeast_longitude').gt(req.query.longitude)
-        .where('northwest_latitude').gt(req.query.latitude)
-        .where('northwest_longitude').lt(req.query.longitude)
+    return Advertisement.find({
+        $and : [
+          {
+          $or : [
+            {
+             $and : [
+              {'southwest_latitude' : { $gt: req.query.latitude }},
+              {'northeast_latitude' : { $lt: req.query.latitude }}
+              ]
+            },
+            {
+             $and: [
+              {'southwest_latitude' : { $lt: req.query.latitude }},
+              {'northeast_latitude' : { $gt: req.query.latitude }}
+            ]} ,
+          ]
+          },
+
+          {
+          $or : [
+            {
+              $and : [
+              {'southwest_longitude' : { $gt: req.query.longitude }},
+              {'northeast_longitude' : { $lt: req.query.longitude }}
+            ]},
+            {
+              $and : [
+              {'southwest_longitude' : { $lt: req.query.longitude }},
+              {'northeast_longitude' : { $gt: req.query.longitude }}
+            ]} ,
+          ]
+          }
+        ]
+        })
         .exec()
         .then(respondWithResult(res))
         .catch(handleError(res));
