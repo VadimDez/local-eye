@@ -12,16 +12,13 @@
 
                 <span class="md-subhead">
                      <md-list flex>
-                        <md-list-item class="md-3-line" ng-repeat="(key, value) in vm.adv" ng-click="null">
+                        <md-list-item class="md-2-line" ng-repeat="(key, value) in vm.adv" ng-click="vm.setArea()">
                           <div class="md-list-item-text" layout="column">
-                            <p>{{value.name}}</p>
+                              <h2 style="margin:0">{{value.name}}</h2>
+                              <p style="margin:0">{{value.desc}}</p>
                           </div>
                         </md-list-item>
                      </md-list>
-
-                    <!--<ul>
-                        <li ng-repeat="(key, value) in vm.adv" >{{value.name}}</li>
-                    </ul>-->
                 </span>
                 </md-card-title-text>
             </md-card-title>

@@ -54,6 +54,10 @@
           });
     }
 
+    setArea(){
+        console.log('I"m here');
+    }
+
     $onInit() {
       // this.$http.get('/api/things')
       //   .then(response => {
