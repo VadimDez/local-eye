@@ -1,0 +1,13 @@
+#add-view {
+    .two {
+        padding: 10px;
+        .md-block {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        ui-gmap-google-map {
+            height: 100%;
+        }
+    }
+}

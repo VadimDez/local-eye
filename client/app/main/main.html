@@ -1,9 +1,16 @@
-<div class="flex-container">
+<div id="main-view" class="flex-container">
     <div>
         <div>
-            <input ng-model="vm.departure" type="text" placeholder="Departure">
-            <input ng-model="vm.destination" type="text" placeholder="Destination">
-            <button ng-click="vm.setupRoute()" type="button">Go</button>
+            <md-input-container>
+                <label>Departure</label>
+                <input ng-model="vm.departure" type="text">
+            </md-input-container>
+            <md-input-container>
+                <label>Destination</label>
+                <input ng-model="vm.destination" type="text">
+            </md-input-container>
+
+            <md-button style="margin-bottom: 35px;" ng-click="vm.setupRoute()" class="md-raised md-primary">Go</md-button>
         </div>
         <ui-gmap-google-map center="vm.map.center" zoom="vm.map.zoom" events="vm.map.events">
             <ui-gmap-marker idKey="'center_marker'" coords="vm.centerMarker" ng-cloak>

@@ -36,3 +36,10 @@
     flex: 1;
   }
 }
+
+#main-view {
+  md-input-container {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}

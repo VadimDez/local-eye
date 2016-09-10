@@ -30,6 +30,7 @@ body{
 
 // Component styles are injected through grunt
 /* inject:scss */
+@import 'add/add';
 @import 'admin/admin';
 @import 'dashboard/dashboard';
 @import 'main/main';

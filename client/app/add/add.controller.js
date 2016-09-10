@@ -8,7 +8,9 @@
   class AddController {
     constructor($http, $scope, $timeout) {
       this.$http = $http;
-      this.newAdvertisement = {};
+      this.newAdvertisement = {
+        url: '/assets/images/banner1_techfest.jpg'
+      };
 
       // this.map = {
       //   control: {},
@@ -21,13 +23,14 @@
 
 
       this.map = {
-        center: {latitude: 40.1451, longitude: -99.6680 }, zoom: 4, bounds: {},
-        events: {
-        }
+        center: { latitude: 48.14248507796358, longitude: 11.581680297851582 },
+        zoom: 8,
+        bounds: {},
+        events: {}
       };
       this.options = {scrollwheel: false};
       this.drawingManagerOptions = {
-        drawingMode: 'marker',
+        // drawingMode: 'rectangle',
         drawingControl: true,
         drawingControlOptions: {
           position: google.maps.ControlPosition.TOP_CENTER,
@@ -58,16 +61,13 @@
       });
 
       $timeout(() => {
-          console.log('HERE???');
         google.maps.event.addListener(this.drawingManagerControl.getDrawingManager(), 'rectanglecomplete', (rectangle) => {
           const bounds = rectangle.getBounds();
 
-          this.newAdvertisement = {
-            southwest_latitude: bounds.f.b,
-            southwest_longitude: bounds.b.b,
-            northeast_latitude: bounds.f.f,
-            northeast_longitude: bounds.b.f
-          };
+            this.newAdvertisement.southwest_latitude = bounds.f.b;
+            this.newAdvertisement.southwest_longitude = bounds.b.b;
+            this.newAdvertisement.northeast_latitude = bounds.f.f;
+            this.newAdvertisement.northeast_longitude = bounds.b.f;
 
           $scope.$apply($scope.newAdvertisement = this.newAdvertisement);
         });
@@ -78,7 +78,9 @@
     createAdvertisement() {
       this.$http.post('/api/advertisements', this.newAdvertisement)
         .then(() => {
-          this.newAdvertisement = {};
+          this.newAdvertisement = {
+            url: '/assets/images/banner1_techfest.jpg'
+          };
         });
     }
   }

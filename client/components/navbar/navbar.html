@@ -20,7 +20,7 @@
   <md-toolbar>
     <div class="md-toolbar-tools">
       <i ng-click="nav.toggleLeft()" class="fa fa-bars" aria-hidden="true"></i>
-      <a href="/"><img src="/assets/images/logo.png" width="200" ></a>
+      <a href="/" class="navbar__logo">LocalEye</a>
 
       <span flex></span>
       <md-menu-bar md-rowspan="10">
@@ -32,6 +32,12 @@
             <md-menu-item ng-hide="nav.isLoggedIn()">
               <md-button ng-hide="nav.isAdmin()" ui-sref-active="active">
                 <a ui-sref="dashboard"><i class="fa fa-sign-in" aria-hidden="true"></i> Dashboard</a>
+              </md-button>
+            </md-menu-item>
+
+            <md-menu-item ng-hide="nav.isLoggedIn()">
+              <md-button ng-hide="nav.isAdmin()" ui-sref-active="active">
+                <a ui-sref="add"><i class="fa fa-sign-in" aria-hidden="true"></i> Add</a>
               </md-button>
             </md-menu-item>
 
