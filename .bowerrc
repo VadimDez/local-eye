@@ -1,4 +1,7 @@
 {
     "directory": "client/bower_components",
-    "timeout": 1200000000
+    "timeout": 1200000000,
+    "resolvers": [
+        "bower-npm-resolver"
+    ]
 }
