@@ -2,7 +2,7 @@
 
 angular.module('localEyeApp', ['localEyeApp.auth', 'localEyeApp.admin', 'localEyeApp.constants',
     'ngCookies', 'ngResource', 'ngSanitize', 'btford.socket-io', 'ui.router', 'validation.match',
-  'uiGmapgoogle-maps','ngMaterial'
+  'uiGmapgoogle-maps','ngMaterial','googlechart'
   ])
   .config(function($urlRouterProvider, $locationProvider, uiGmapGoogleMapApiProvider) {
     $urlRouterProvider.otherwise('/');
