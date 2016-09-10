@@ -12,10 +12,17 @@
 
                 <span class="md-subhead">
                      <md-list flex>
-                        <md-list-item class="md-2-line" ng-repeat="(key, value) in vm.adv" ng-click="vm.setArea()">
+                        <md-list-item class="md-2-line" ng-repeat="(key, value) in vm.adv" ng-click="vm.setArea('{{value._id}}')">
                           <div class="md-list-item-text" layout="column">
                               <h2 style="margin:0">{{value.name}}</h2>
                               <p style="margin:0">{{value.desc}}</p>
+                          </div>
+                        </md-list-item>
+
+                         <md-list-item class="md-2-line" ng-click="vm.setArea(clearMap())">
+                          <div class="md-list-item-text" layout="column">
+                              <h2 style="margin:0">ALL</h2>
+                              <p style="margin:0">Select all areas</p>
                           </div>
                         </md-list-item>
                      </md-list>
