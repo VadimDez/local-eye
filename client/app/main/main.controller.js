@@ -4,15 +4,19 @@
 
   class MainController {
 
-    constructor($http, $scope, socket) {
+    constructor($http, $scope, socket, $timeout) {
       this.$http = $http;
       this.socket = socket;
       this.awesomeThings = [];
+      this.$timeout = $timeout;
 
       this.map = {
         control: {},
         center: { latitude: 45, longitude: -73 },
-        zoom: 8
+        zoom: 8,
+        events: {
+          center_changed: this.bounds_changed.bind(this)
+        }
       };
 
       this.directionsDisplay = new google.maps.DirectionsRenderer();
@@ -73,7 +77,14 @@
       });
     }
 
-
+    bounds_changed(e) {
+      this.$timeout(() => {
+        this.centerMarker = {
+          latitude: e.center.lat(),
+          longitude: e.center.lng()
+        };
+      }, 300);
+    }
   }
 
   angular.module('localEyeApp')
