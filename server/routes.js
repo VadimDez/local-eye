@@ -12,6 +12,7 @@ export default function(app) {
   app.use('/api/advertisements', require('./api/advertisement'));
   app.use('/api/things', require('./api/thing'));
   app.use('/api/users', require('./api/user'));
+  app.use('/api/routes', require('./api/routes'));
 
   app.use('/auth', require('./auth').default);
 
