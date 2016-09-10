@@ -14,8 +14,7 @@
     "angular-ui-router": "~0.2.15",
     "angular-validation-match": "~1.5.2",
     "angular-google-maps": "^2.3.4",
-    "angular-material": "latest",
-    "angular-chart.js": "^1.0.2"
+    "angular-material": "latest"
   },
   "devDependencies": {
     "angular-mocks": "~1.5.0"

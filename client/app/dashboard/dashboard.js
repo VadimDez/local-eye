@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('localEyeApp',['chart.js'])
+angular.module('localEyeApp')
   .config(function($stateProvider) {
     $stateProvider.state('dashboard', {
       url: '/dashboard',

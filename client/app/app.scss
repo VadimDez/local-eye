@@ -4,7 +4,7 @@ $fa-font-path: "../bower_components/font-awesome/fonts";
 /**
  * App-wide Styles
  */
-
+*:focus{outline: none;}
 .browserupgrade {
   margin: 0.2em 0;
   background: #ccc;
@@ -14,7 +14,10 @@ $fa-font-path: "../bower_components/font-awesome/fonts";
 body{
   color:#2b2b2b;
 }
-
+.fa.fa-bars{
+  margin-right: 2%;
+  cursor:pointer;
+}
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
