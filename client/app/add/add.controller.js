@@ -6,18 +6,57 @@
 
 (function () {
   class AddController {
-    constructor($http) {
+    constructor($http, $scope) {
       this.$http = $http;
       this.newAdvertisement = {};
 
+      // this.map = {
+      //   control: {},
+      //   center: { latitude: 48.14248507796358, longitude: 11.581680297851582 },
+      //   zoom: 8,
+      //   events: {
+      //     // center_changed: this.bounds_changed.bind(this)
+      //   }
+      // };
+
+
       this.map = {
-        control: {},
-        center: { latitude: 48.14248507796358, longitude: 11.581680297851582 },
-        zoom: 8,
+        center: {latitude: 40.1451, longitude: -99.6680 }, zoom: 4, bounds: {},
         events: {
-          // center_changed: this.bounds_changed.bind(this)
+
         }
       };
+      this.options = {scrollwheel: false};
+      this.drawingManagerOptions = {
+        drawingMode: 'marker',
+        drawingControl: true,
+        drawingControlOptions: {
+          position: google.maps.ControlPosition.TOP_CENTER,
+          drawingModes: ['circle', 'polygon', 'polyline', 'rectangle']
+        },
+        circleOptions: {
+          fillColor: '#ffff00',
+          fillOpacity: 1,
+          strokeWeight: 5,
+          clickable: false,
+          editable: true,
+          zIndex: 1
+        }
+      };
+      this.markersAndCircleFlag = true;
+      this.drawingManagerControl = {};
+
+      $scope.$watch('markersAndCircleFlag', () => {
+        if (!this.drawingManagerControl.getDrawingManager) {
+          return;
+        }
+        var controlOptions = angular.copy(this.drawingManagerOptions);
+        if (!this.markersAndCircleFlag) {
+          controlOptions.drawingControlOptions.drawingModes.shift();
+          controlOptions.drawingControlOptions.drawingModes.shift();
+        }
+        this.drawingManagerControl.getDrawingManager().setOptions(controlOptions);
+      });
     }
 
     createAdvertisement() {

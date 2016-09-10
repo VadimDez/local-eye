@@ -10,6 +10,7 @@ angular.module('localEyeApp', ['localEyeApp.auth', 'localEyeApp.admin', 'localEy
     $locationProvider.html5Mode(true);
 
     uiGmapGoogleMapApiProvider.configure({
-      china: true
+      china: true,
+      libraries: 'drawing,weather,geometry,visualization'
     });
   });
