@@ -162,10 +162,11 @@
       this.$http.get(`/api/advertisements?latitude=${ lat }&longitude=${ lng }`)
         .then(res => {
 
-          if (res.data.length > 0) {
+          if (res.data.length) {
               // ad found!
-              this.advertisement = res.data[0].name;
+            this.advertisement = res.data[0];
           } else {
+            this.advertisement = null
               // render default advertising
               // if needed
           }
