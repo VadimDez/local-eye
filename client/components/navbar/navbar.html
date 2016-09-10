@@ -23,13 +23,18 @@
       <a href="/"><img src="/assets/images/logo.png" width="200" ></a>
 
       <span flex></span>
-      <p class="navbar-text">Hello {{ nav.getCurrentUser().name }}</p>
       <md-menu-bar md-rowspan="10">
         <md-menu>
           <button ng-click="$mdOpenMenu()">
             <i class="fa fa-user" aria-hidden="true"></i>
           </button>
           <md-menu-content width="3">
+            <md-menu-item ng-hide="nav.isLoggedIn()">
+              <md-button ng-hide="nav.isAdmin()" ui-sref-active="active">
+                <a ui-sref="dashboard"><i class="fa fa-sign-in" aria-hidden="true"></i> Dashboard</a>
+              </md-button>
+            </md-menu-item>
+
             <md-menu-item ng-hide="nav.isLoggedIn()">
               <md-button ng-hide="nav.isLoggedIn()" ui-sref-active="active">
                 <a ui-sref="login"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>

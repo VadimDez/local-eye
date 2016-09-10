@@ -1,4 +1,10 @@
-<form novalidate>
+<form novalidate ng-submit="vm.createAdvertisement()">
+    <input ng-model="vm.newAdvertisement.name" type="text" placeholder="Name">
+    <input ng-model="vm.newAdvertisement.southeast_latitude" type="text" placeholder="southeast_latitude">
+    <input ng-model="vm.newAdvertisement.southeast_longitude" type="text" placeholder="southeast_longitude">
+    <input ng-model="vm.newAdvertisement.northwest_latitude" type="text" placeholder="northwest_latitude">
+    <input ng-model="vm.newAdvertisement.northwest_longitude" type="text" placeholder="northwest_longitude">
 
+    <button type="submit">Create</button>
 </form>
 <ui-gmap-google-map center="vm.map.center" zoom="vm.map.zoom" events="vm.map.events"></ui-gmap-google-map>
