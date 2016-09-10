@@ -24,7 +24,22 @@ function handleError(res, statusCode) {
  * restriction: 'admin'
  */
 export function index(req, res) {
-  return res.status(200).json({points: []}).end();
+
+  var request = require('request')
+
+  let body = '';
+  request
+    .get('https://maps.googleapis.com/maps/api/directions/json?origin='+ req.query.start + '&destination=' + req.query.end)
+    .on('data', function(chunk) {
+        body = body + chunk
+    })
+    .on('end', function() {
+        var respBody = JSON.parse(body);
+        var polyline = require('polyline');
+        var allPoints = polyline.decode(respBody.routes[0].overview_polyline.points);
+        return res.status(200).json({points: allPoints}).end();
+    })
+
 }
 
 /**
