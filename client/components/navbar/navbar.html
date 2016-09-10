@@ -27,3 +27,51 @@
     </div>
   </div>
 </div>
+<md-sidenav class="md-sidenav-left" md-component-id="left"
+            md-disable-backdrop md-whiteframe="4">
+
+  <md-toolbar class="md-theme-indigo">
+    <h1 class="md-toolbar-tools">Disabled Backdrop</h1>
+  </md-toolbar>
+
+  <md-content layout-margin>
+    <p>
+      This sidenav is not showing any backdrop, where users can click on it, to close the sidenav.
+    </p>
+    <md-button ng-click="nav.toggleLeft()" class="md-accent">
+      Close this Sidenav
+    </md-button>
+  </md-content>
+
+</md-sidenav>
+
+<md-content flex layout-padding>
+
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+        <img src="/assets/images/logo.png" width="200" >
+
+      <span flex></span>
+      <md-button class="md-raised" aria-label="Learn More">
+        Learn More
+      </md-button>
+      <md-button class="md-fab md-mini" aria-label="Favorite">
+        <!--<md-icon md-svg-icon="img/icons/favorite.svg"></md-icon>-->
+      </md-button>
+    </div>
+  </md-toolbar>
+  <div layout="column" layout-align="top center">
+    <p>
+      Developers can also disable the backdrop of the sidenav.<br/>
+      This will disable the functionality to click outside to close the sidenav.
+    </p>
+
+    <div>
+      <md-button ng-click="nav.toggleLeft()" class="md-raised">
+        Toggle Sidenav
+      </md-button>
+    </div>
+
+  </div>
+
+</md-content>
