@@ -1,12 +1,4 @@
-<form novalidate ng-submit="vm.createAdvertisement()">
-    <input ng-model="vm.newAdvertisement.name" type="text" placeholder="Name">
-    <input ng-model="vm.newAdvertisement.southwest_latitude" type="text" placeholder="southwest_latitude">
-    <input ng-model="vm.newAdvertisement.southwest_longitude" type="text" placeholder="southwest_longitude">
-    <input ng-model="vm.newAdvertisement.northeast_latitude" type="text" placeholder="northeast_latitude">
-    <input ng-model="vm.newAdvertisement.northeast_longitude" type="text" placeholder="northeast_longitude">
 
-    <button type="submit">Create</button>
-</form>
 <!--<ui-gmap-google-map center="vm.map.center" zoom="vm.map.zoom" events="vm.map.events">-->
     <!--&lt;!&ndash;<ui-gmap-map-control template="draw.tpl.html" position="top-right" index="1" controller="mapWidgetCtrl"></ui-gmap-map-control>&ndash;&gt;-->
     <!--&lt;!&ndash;<ui-gmap-map-control template="clear.tpl.html" position="top-right" index="1" controller="mapWidgetCtrl"></ui-gmap-map-control>&ndash;&gt;-->
@@ -21,10 +13,28 @@
     <!--<button class="btn btn-lg btn-primary"  ng-click="clearWidget.controlClick()">{{clearWidget.controlText}}</button>-->
 <!--</script>-->
 
-<ui-gmap-google-map center="vm.map.center" zoom="vm.map.zoom" draggable="true" options="vm.options" bounds="vm.map.bounds">
-    <ui-gmap-drawing-manager options="vm.drawingManagerOptions" control="vm.drawingManagerControl" events="vm.events"></ui-gmap-drawing-manager>
-</ui-gmap-google-map>
-<div style="display:block;z-index:100;position:absolute;bottom:30px;left:3px;width:380px;height:38px;background:white;">
-    <label>Show drawing manager (via options)? <input type="checkbox" ng-model="vm.drawingManagerOptions.drawingControl"/></label><br/>
-    <label>Allow marker and circle drawing modes (via control)? <input type="checkbox" ng-model="vm.markersAndCircleFlag"/></label>
+<div layout="row" class="zero">
+
+    <div flex="70" class="one">
+        {{ vm.newAdvertisement }}
+        <ui-gmap-google-map center="vm.map.center" zoom="vm.map.zoom" draggable="true" options="vm.options" bounds="vm.map.bounds">
+            <ui-gmap-drawing-manager options="vm.drawingManagerOptions" control="vm.drawingManagerControl" events="vm.events"></ui-gmap-drawing-manager>
+        </ui-gmap-google-map>
+        <div style="display:block;z-index:100;position:absolute;bottom:30px;left:3px;width:380px;height:38px;background:white;">
+            <label>Show drawing manager (via options)? <input type="checkbox" ng-model="vm.drawingManagerOptions.drawingControl"/></label><br/>
+            <label>Allow marker and circle drawing modes (via control)? <input type="checkbox" ng-model="vm.markersAndCircleFlag"/></label>
+        </div>
+    </div>
+    <div flex="30" class="two">
+        <form novalidate ng-submit="vm.createAdvertisement()">
+            <input ng-model="vm.newAdvertisement.name" type="text" placeholder="Name">
+            <input ng-model="vm.newAdvertisement.southwest_latitude" type="text" placeholder="southwest_latitude">
+            <input ng-model="vm.newAdvertisement.southwest_longitude" type="text" placeholder="southwest_longitude">
+            <input ng-model="vm.newAdvertisement.northeast_latitude" type="text" placeholder="northeast_latitude">
+            <input ng-model="vm.newAdvertisement.northeast_longitude" type="text" placeholder="northeast_longitude">
+
+            <button type="submit">Create</button>
+        </form>
+    </div>
+
 </div>

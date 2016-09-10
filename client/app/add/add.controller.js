@@ -58,12 +58,18 @@
       });
 
       $timeout(() => {
+          console.log('HERE???');
         google.maps.event.addListener(this.drawingManagerControl.getDrawingManager(), 'rectanglecomplete', (rectangle) => {
-          console.log('here');
-          console.log(rectangle);
-          console.log(rectangle.getBounds());
+          const bounds = rectangle.getBounds();
 
-          // this.newAdvertisement.
+          this.newAdvertisement = {
+            southwest_latitude: bounds.f.b,
+            southwest_longitude: bounds.b.b,
+            northeast_latitude: bounds.f.f,
+            northeast_longitude: bounds.b.f
+          };
+
+          $scope.$apply($scope.newAdvertisement = this.newAdvertisement);
         });
 
       }, 1000);
