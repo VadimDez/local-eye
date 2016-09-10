@@ -8,7 +8,7 @@
       this.$http = $http;
       this.socket = socket;
       this.awesomeThings = [];
-      this.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
+      this.map = { center: { latitude: 47.6024589, longitude: 19.6490477 }, zoom: 5 };
 
       // sw => (f.b, b.b)
       // ne => (f.f, b.f)
@@ -64,7 +64,35 @@
           });
     }
 
+    clearMap(){
+        map.fitBounds(bounds);
+    }
+
     setArea(){
+        // sw => (f.b, b.b)
+        // ne => (f.f, b.f)
+        let arr = [];
+
+        this.adv.forEach(item=>{
+            let bounds = new google.maps.LatLngBounds(
+                new google.maps.LatLng(item.southeast_latitude, item.southeast_longitude),
+                new google.maps.LatLng(item.northwest_latitude, item.northwest_longitude));
+            arr.push({
+                bounds: bounds,
+                fill: { color: '#85C1E9', opacity: 0.5}
+            });
+        });
+
+        this.rectangles
+
+
+        /*let bounds = new google.maps.LatLngBounds(
+            new google.maps.LatLng(48.8068631, 10.2282714),
+            new google.maps.LatLng(47.185979, 16.243286));
+        this.rectangle = {
+            bounds: bounds,
+            fill: { color: '#85C1E9', opacity: 0.5}
+        };*/
 
     }
 
