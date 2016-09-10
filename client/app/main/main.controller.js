@@ -24,14 +24,53 @@
       this.directionsService = new google.maps.DirectionsService();
       this.geocoder = new google.maps.Geocoder();
 
-      this.directions = {
-        origin: "Collins St, Melbourne, Australia",
-        destination: "MCG Melbourne, Australia",
-        showList: false
-      };
+      this.directionsRequest = {
+                         origin: '48.1351, 11.5820',
+                         destination: '52.5200, 13.4050',
+                         waypoints: [
+                           {
+                             location: '50.1109, 8.6821',
+                             stopover: false
+                           }],
+                         provideRouteAlternatives: false,
+                         travelMode: 'DRIVING',
+                         drivingOptions: {
+                           departureTime: new Date(1337675679473),
+                           trafficModel: 'pessimistic'
+                         },
+                         unitSystem: google.maps.UnitSystem.IMPERIAL,
+                         showList: false
+                       }
 
       this.centerMarker = this.map.center;
       this.locationBasedAdvertisement(this.centerMarker.latitude, this.centerMarker.longitude);
+
+      this.polylines = [
+            {
+                id: 1,
+                path: [
+                    { latitude: 45, longitude: -74 },
+                    { latitude: 30, longitude: -89 },
+                    { latitude: 37, longitude: -122 },
+                    { latitude: 60, longitude: -95 }
+                ],
+                stroke: {
+                    color: '#6060FB',
+                    weight: 3
+                },
+                editable: false,
+                draggable: false,
+                geodesic: true,
+                visible: true,
+                icons: [{
+                    icon: {
+                        path: google.maps.SymbolPath.BACKWARD_OPEN_ARROW
+                    },
+                    offset: '25px',
+                    repeat: '50px'
+                }]
+            },
+        ];
 
       // $scope.$on('$destroy', function() {
       //   socket.unsyncUpdates('thing');
@@ -60,17 +99,14 @@
     // }
 
     getDirections() {
-      var request = {
-        origin: this.directions.origin,
-        destination: this.directions.destination,
-        travelMode: google.maps.DirectionsTravelMode.DRIVING
-      };
+
       let vm = this;
-      this.directionsService.route(request, function (response, status) {
+      this.directionsService.route(this.directionsRequest, function (response, status) {
         if (status === google.maps.DirectionsStatus.OK) {
-          vm.directionsDisplay.setDirections(response);
+          alert('Google route succesfull!');
           console.log(vm.map.control);
           vm.directionsDisplay.setMap(vm.map.control.getGMap());
+          vm.directionsDisplay.setDirections(response);
           vm.directionsDisplay.setPanel(document.getElementById('directionsList'));
           vm.directions.showList = true;
         } else {
