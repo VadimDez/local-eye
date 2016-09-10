@@ -8,8 +8,18 @@
       this.$http = $http;
       this.socket = socket;
       this.awesomeThings = [];
-
       this.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
+
+      // sw => (f.b, b.b)
+      // ne => (f.f, b.f)
+
+      let bounds = new google.maps.LatLngBounds(
+        new google.maps.LatLng(48.69096039092549, -118.4765625),
+        new google.maps.LatLng(34.52466147177173, -78.3984375));
+      this.rectangle = {
+          bounds: bounds,
+          fill: { color: '#000', opacity: 0.5}
+      };
 
       // $scope.$on('$destroy', function() {
       //   socket.unsyncUpdates('thing');

@@ -1,9 +1,9 @@
 <form novalidate ng-submit="vm.createAdvertisement()">
     <input ng-model="vm.newAdvertisement.name" type="text" placeholder="Name">
-    <input ng-model="vm.newAdvertisement.southeast_latitude" type="text" placeholder="southeast_latitude">
-    <input ng-model="vm.newAdvertisement.southeast_longitude" type="text" placeholder="southeast_longitude">
-    <input ng-model="vm.newAdvertisement.northwest_latitude" type="text" placeholder="northwest_latitude">
-    <input ng-model="vm.newAdvertisement.northwest_longitude" type="text" placeholder="northwest_longitude">
+    <input ng-model="vm.newAdvertisement.southwest_latitude" type="text" placeholder="southwest_latitude">
+    <input ng-model="vm.newAdvertisement.southwest_longitude" type="text" placeholder="southwest_longitude">
+    <input ng-model="vm.newAdvertisement.northeast_latitude" type="text" placeholder="northeast_latitude">
+    <input ng-model="vm.newAdvertisement.northeast_longitude" type="text" placeholder="northeast_longitude">
 
     <button type="submit">Create</button>
 </form>
@@ -22,7 +22,7 @@
 <!--</script>-->
 
 <ui-gmap-google-map center="vm.map.center" zoom="vm.map.zoom" draggable="true" options="vm.options" bounds="vm.map.bounds">
-    <ui-gmap-drawing-manager options="vm.drawingManagerOptions" control="vm.drawingManagerControl"></ui-gmap-drawing-manager>
+    <ui-gmap-drawing-manager options="vm.drawingManagerOptions" control="vm.drawingManagerControl" events="vm.events"></ui-gmap-drawing-manager>
 </ui-gmap-google-map>
 <div style="display:block;z-index:100;position:absolute;bottom:30px;left:3px;width:380px;height:38px;background:white;">
     <label>Show drawing manager (via options)? <input type="checkbox" ng-model="vm.drawingManagerOptions.drawingControl"/></label><br/>

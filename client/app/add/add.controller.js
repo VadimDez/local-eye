@@ -6,7 +6,7 @@
 
 (function () {
   class AddController {
-    constructor($http, $scope) {
+    constructor($http, $scope, $timeout) {
       this.$http = $http;
       this.newAdvertisement = {};
 
@@ -23,7 +23,6 @@
       this.map = {
         center: {latitude: 40.1451, longitude: -99.6680 }, zoom: 4, bounds: {},
         events: {
-
         }
       };
       this.options = {scrollwheel: false};
@@ -36,7 +35,7 @@
         },
         circleOptions: {
           fillColor: '#ffff00',
-          fillOpacity: 1,
+          fillOpacity: 0.3,
           strokeWeight: 5,
           clickable: false,
           editable: true,
@@ -57,6 +56,17 @@
         }
         this.drawingManagerControl.getDrawingManager().setOptions(controlOptions);
       });
+
+      $timeout(() => {
+        google.maps.event.addListener(this.drawingManagerControl.getDrawingManager(), 'rectanglecomplete', (rectangle) => {
+          console.log('here');
+          console.log(rectangle);
+          console.log(rectangle.getBounds());
+
+          // this.newAdvertisement.
+        });
+
+      }, 1000);
     }
 
     createAdvertisement() {
