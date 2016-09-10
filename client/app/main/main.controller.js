@@ -158,11 +158,32 @@
     }
 
     locationBasedAdvertisement(lat, lng) {
-      if (lat < 48.20842133818611 && lat > 47.98462736343803 && lng > 11.405899047851582 && lng < 11.740982055664082) {
-        this.advertisement = 'BMW';
-      } else {
-        this.advertisement = 'AUDI';
-      }
+
+      this.$http.get(`/api/advertisements?latitude=${ lat }&longitude=${ lng }`)
+        .then(res => {
+
+          if (res.data.length > 0) {
+              // ad found!
+              this.advertisement = res.data[0].name;
+          } else {
+              // render default advertising
+              // if needed
+          }
+
+
+        },  function fallBackOnError(resp) {
+
+            //
+            // faking advertisement when the server returns an error
+            //
+            if (lat < 48.20842133818611 && lat > 47.98462736343803 && lng > 11.405899047851582 && lng < 11.740982055664082) {
+              this.advertisement = 'BMW';
+            } else {
+              this.advertisement = 'AUDI';
+            }
+          }
+        );
+        
     }
   }
 
