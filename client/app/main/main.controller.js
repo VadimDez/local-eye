@@ -92,7 +92,6 @@
     }
 
     simulateRun(i) {
-
       this.timer = this.$timeout(() => {
         if (!this.polylines[0].path[i]) {
           this.$timeout.cancel(this.timer);
