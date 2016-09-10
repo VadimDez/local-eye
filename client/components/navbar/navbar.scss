@@ -1,3 +1,11 @@
 md-toolbar:not(.md-menu-toolbar){
   background-color:#73D700;
 }
+.fa.fa-user{
+  font-size:24px;
+  color:white;
+}
+md-menu-bar md-menu.md-open > button{background-color:inherit;}
+md-menu-bar md-menu > button:focus{background-color:inherit;}
+md-menu-item a{text-decoration:none;color:#2b2b2b;}
+.layout-padding{padding:0;}

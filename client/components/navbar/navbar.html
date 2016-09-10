@@ -1,34 +1,8 @@
-<div class="navbar navbar-default navbar-static-top" ng-controller="NavbarController">
-  <div class="container">
-    <div class="navbar-header">
-      <button class="navbar-toggle" type="button" ng-click="nav.isCollapsed = !nav.isCollapsed">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a href="/" class="navbar-brand">local-eye</a>
-    </div>
-    <div uib-collapse="nav.isCollapsed" class="navbar-collapse collapse" id="navbar-main">
-      <ul class="nav navbar-nav">
-        <li ng-repeat="item in nav.menu" ui-sref-active="active">
-            <a ui-sref="{{item.state}}">{{item.title}}</a>
-        </li>
-        <li ng-show="nav.isAdmin()" ui-sref-active="active"><a ui-sref="admin">Admin</a></li>
-      </ul>
-
-      <ul class="nav navbar-nav navbar-right">
-        <li ng-hide="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="signup">Sign up</a></li>
-        <li ng-hide="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="login">Login</a></li>
-        <li ng-show="nav.isLoggedIn()"><p class="navbar-text">Hello {{ nav.getCurrentUser().name }}</p> </li>
-        <li ng-show="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="settings"><span class="glyphicon glyphicon-cog"></span></a></li>
-        <li ng-show="nav.isLoggedIn()"><a ui-sref="logout">Logout</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
-<md-sidenav class="md-sidenav-left" md-component-id="left"
-            md-disable-backdrop md-whiteframe="4">
+<md-sidenav
+        class="md-sidenav-left"
+        md-component-id="left"
+        md-whiteframe="4"
+>
 
   <md-toolbar class="md-theme-indigo">
     <h1 class="md-toolbar-tools">Disabled Backdrop</h1>
@@ -38,26 +12,51 @@
     <p>
       This sidenav is not showing any backdrop, where users can click on it, to close the sidenav.
     </p>
-    <md-button ng-click="nav.toggleLeft()" class="md-accent">
-      Close this Sidenav
-    </md-button>
   </md-content>
-
 </md-sidenav>
 
 <md-content flex layout-padding>
 
   <md-toolbar>
     <div class="md-toolbar-tools">
-        <img src="/assets/images/logo.png" width="200" >
+      <i ng-click="nav.toggleLeft()" class="fa fa-bars" aria-hidden="true"></i>
+      <a href="/"><img src="/assets/images/logo.png" width="200" ></a>
 
       <span flex></span>
-      <md-button class="md-raised" aria-label="Learn More">
-        Learn More
-      </md-button>
-      <md-button class="md-fab md-mini" aria-label="Favorite">
-        <!--<md-icon md-svg-icon="img/icons/favorite.svg"></md-icon>-->
-      </md-button>
+      <p class="navbar-text">Hello {{ nav.getCurrentUser().name }}</p>
+      <md-menu-bar md-rowspan="10">
+        <md-menu>
+          <button ng-click="$mdOpenMenu()">
+            <i class="fa fa-user" aria-hidden="true"></i>
+          </button>
+          <md-menu-content width="3">
+            <md-menu-item ng-hide="nav.isLoggedIn()">
+              <md-button ng-click="nav.sampleAction('share', $event)" ng-hide="nav.isLoggedIn()" ui-sref-active="active">
+                <a ui-sref="login"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
+              </md-button>
+            </md-menu-item>
+
+            <md-menu-item ng-hide="nav.isLoggedIn()">
+              <md-button ng-click="nav.sampleAction('share', $event)" ui-sref-active="active">
+                <a ui-sref="signup"><i class="fa fa-user-plus" aria-hidden="true"></i> Sign up</a>
+              </md-button>
+            </md-menu-item>
+
+
+            <md-menu-item ng-show="nav.isLoggedIn()">
+              <md-button ng-click="nav.sampleAction('share', $event)" ui-sref-active="active">
+            <a ui-sref="settings">Profile</a>
+            </md-button>
+            </md-menu-item>
+
+            <md-menu-item ng-show="nav.isLoggedIn()">
+              <md-button ng-click="nav.sampleAction('share', $event)" ui-sref-active="active">
+              <a ui-sref="logout">Logout</a>
+              </md-button>
+            </md-menu-item>
+        </md-menu>
+      </md-menu-bar>
+
     </div>
   </md-toolbar>
   <div layout="column" layout-align="top center">
