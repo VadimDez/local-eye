@@ -9,8 +9,9 @@
     constructor($http, $scope, $timeout) {
       this.$http = $http;
       this.newAdvertisement = {
-        url: '/assets/images/banner1_techfest.jpg'
+        url: '/assets/images/banner3_nürnberg.jpg'
       };
+      this.isCreated = false;
 
       // this.map = {
       //   control: {},
@@ -78,8 +79,9 @@
     createAdvertisement() {
       this.$http.post('/api/advertisements', this.newAdvertisement)
         .then(() => {
+          this.isCreated = true;
           this.newAdvertisement = {
-            url: '/assets/images/banner1_techfest.jpg'
+            // url: '/assets/images/banner1_techfest.jpg'
           };
         });
     }
