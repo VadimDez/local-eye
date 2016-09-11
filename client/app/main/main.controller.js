@@ -93,15 +93,17 @@
 
     simulateRun(i) {
       this.timer = this.$timeout(() => {
-        if (!this.polylines[0].path[i]) {
-          this.$timeout.cancel(this.timer);
-          return;
-        }
+        const length = this.polylines[0].path.length - 1;
 
         this.map.center = this.polylines[0].path[i];
         this.centerMarker = this.polylines[0].path[i];
 
-        this.simulateRun(Math.min(i + 2, this.polylines[0].path.length - 1));
+        if (i === length) {
+          this.$timeout.cancel(this.timer);
+          return;
+        }
+
+        this.simulateRun(Math.min(i + 2, length));
       }, 100);
     }
 
