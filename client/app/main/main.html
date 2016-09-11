@@ -13,7 +13,8 @@
             <md-button style="margin-bottom: 35px;" ng-click="vm.setupRoute()" class="md-raised md-primary">Go</md-button>
         </div>
         <ui-gmap-google-map center="vm.map.center" zoom="vm.map.zoom" events="vm.map.events">
-            <ui-gmap-marker idKey="'center_marker'" coords="vm.centerMarker" ng-cloak>
+            <ui-gmap-marker idKey="'center_marker'" coords="vm.centerMarker"
+                            icon= '{url:    "/assets/images/truck-front-small.png" }' ng-cloak>
               <ui-gmap-polyline ng-repeat="p in vm.polylines" path="p.path" stroke="p.stroke" visible='p.visible'
                                 geodesic='p.geodesic' fit="false" editable="p.editable" draggable="p.draggable"></ui-gmap-polyline>
             </ui-gmap-marker>
